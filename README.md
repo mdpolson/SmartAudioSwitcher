@@ -1,15 +1,28 @@
+![Skin Preview Image](http://i.imgur.com/B1Jwlab.gif)
+
 # SmartAudioSwitcher
-This is a [Rainmeter](https://www.rainmeter.net/) skin using [UnFold](https://devilrev.deviantart.com/art/unFold-A-Launcher-618503449)'s design to switch audio devices and which requires minimal setup.  Users should not have to edit anything from the .ini file; instead, edits should only need to be made in the Preferences.inc file.
+This is a [Rainmeter](https://www.rainmeter.net/) skin using [UnFold](https://devilrev.deviantart.com/art/unFold-A-Launcher-618503449)'s design to switch audio devices and which requires minimal setup.  The skin displays either a headset or speaker icon.  When hovering the mouse over the icon, the image slides out to display `Headset` or `Speaker` and it's respective icon.  If left clicked, the audio output device is switched to the other device (clicking `Headset` switches to `Speaker` and vice versa).  If right clicked, the audio output device is muted and the icon is updated to display a slash through the image.  The skin supports a black icon set or a white icon set, as well as supporting sliding out to the right or left.  It also supports updating visualizers if necessary when switching audio devices.
+
+Users typically should not have to edit anything from the .ini file; instead, edits should only need to be made in the Preferences.inc file.
 
 # Setup
 After installing the skin, navigate to your Rainmeter folder, then into `SmartAudioSwitcher/@Resources` and open `Preferences.inc` with a text editor.
 From here, you should see several variables listed.
 ## Variable options
 ### BlackIcons
-BlackIcons can be set to either 1 or 0.  If set to 1, the Black image set is used.  If set to 0, the White image set is used.
+BlackIcons can be set to either 1 or 0. 
+
+If set to 1, the Black image set is used.  
+![Black image preview](https://github.com/mdpolson/SmartAudioSwitcher/raw/master/SmartAudioSwitcher/%40Resources/Buttons/Black/speaker.png)
+
+If set to 0, the White image set is used.
+![White image preview](https://github.com/mdpolson/SmartAudioSwitcher/raw/master/SmartAudioSwitcher/%40Resources/Buttons/White/speaker.png)
 ### SpeakerName and HeadsetName
 These variables should be set to the name of the audio output devices you wish to switch between.  To check the name of your audio output devices, right click the speaker icon in your system tray (bottom right of screen) and select `Playback Devices`.  All of your audio devices should be listed.  If the devices you wish to switch between share names with *any* other device in the list, you'll need to change the name of the device to have a unique name.  Right click the device, select `Properties`, change the name in the window that opens, and click OK.
-The device name you use for SpeakerName will display the speaker icon and the device name used for HeadsetName will display the headset icon in the skin.
+
+The device name you use for SpeakerName will display the speaker icon ![Speaker icon preview](https://github.com/mdpolson/SmartAudioSwitcher/raw/master/SmartAudioSwitcher/%40Resources/Buttons/Black/speaker.png)
+
+and the device name used for HeadsetName will display the headset icon ![Headset icon preview](https://github.com/mdpolson/SmartAudioSwitcher/raw/master/SmartAudioSwitcher/%40Resources/Buttons/Black/headset.png)
 ### DefaultDevice
 When the skin is initially loaded (or reloaded), it will scan your devices, then set your audio output to a default device.  This can be either `#HeadsetName#` or `#SpeakerName#`.  Choose which device you want to be your default.
 ### Slide Direction
@@ -21,6 +34,6 @@ If you're using a visualizer, when you change audio devices the visualizer may c
 `VisualizerINI` should be set to the primary ini file controlling your visualizer skin.  Typically this can be found in the top folder of the skin.
 
 # Advanced Edits
-If you have more than one visualizer and need to update the visualizer when switching audio devices, you will need to edit the `.ini` file of this skin.  
-Open up the `.ini` and scroll down to the `[Speakers]` and `[Headset]` sections and look in the `LeftMouseUpAction]` for `[!Refresh #Visualizer# "visualizer.ini"]`
+If you have more than one visualizer and need to update the visualizer when switching audio devices, you will need to edit the `SmartAudioSwitcher.ini` file of this skin.  
+Open up the `SmartAudioSwitcher.ini` and scroll down to the `[Speakers]` and `[Headset]` sections and look in the `LeftMouseUpAction]` for `[!Refresh #Visualizer# "visualizer.ini"]`
 Immediately after this block, you need to add `[!Refresh <Visualizer Name> <Visualizer ini>]`, but replace `<Visualizer Name>` with the name of your second visualizer, and `<Visualizer ini>` with the top-level controlling ini file of the skin.  __Use quotes around these two variables.__
